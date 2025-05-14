@@ -7,8 +7,14 @@ import Sidebar from "@/components/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Clone YT Music",
-  description: "Clone YT Music",
+  title: "empal03 - Clone YT Music",
+  description: "empal03 - Clone YT Music",
+  openGraph: {
+    title: "empal03 - Clone YT Music",
+    description: "empal03 - Clone YT Music",
+    images: "/main-logo.svg",
+    url: "https://yt-music-three.vercel.app/"
+  }
 };
 
 export default function RootLayout({
