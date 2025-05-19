@@ -19,11 +19,11 @@ export default async function Home() {
 				<div className="mt-20"></div>
 				<PlayListCarousel playlistArray={[...dummyPlaylistArray1]} Thumbnail={<div className="w-[56px] h-[56px]"><UserIcon size="lg" /></div>} title="다시 듣기" subTitle="empal03" />
 				<div className="mt-20"></div>
-				<PlayListCarousel playlistArray={[...dummyPlaylistArray2]} title="케이시 - Full Bloom" subTitle="새로운 앨범" />
+				<PlayListCarousel playlistArray={[...dummyPlaylistArray2]} title="TEST TITLE 1" subTitle="TEST SUBTITLE 1" />
 				<div className="mt-20"></div>
-				<PlayListCarousel playlistArray={[...dummyPlaylistArray3]} title="커뮤니티 제공" />
+				<PlayListCarousel playlistArray={[...dummyPlaylistArray3]} title="TEST TITLE 2" />
 				<div className="mt-20"></div>
-				<PlayListCarousel playlistArray={[...dummyPlaylistArray4]} title="커버 및 리믹스" />
+				<PlayListCarousel playlistArray={[...dummyPlaylistArray4]} title="TEST TITLE 3" />
 			</div>
 		</PagePadding>
 	);
