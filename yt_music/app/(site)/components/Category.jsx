@@ -20,11 +20,13 @@ const Category = () => {
     }
 
     return (
-        <ul className="max-w-full overflow-x-auto flex flex-row gap-4">
-            {homeCategoryList.map(item => {
-                return <li key={item.label} onClick={() => onClickCategory(item)} className={cn("h-[38px] min-w-fit px-3 flex justify-center items-center border border-transparent rounded-lg bg-[rgba(144,144,144,0.2)] cursor-pointer hover:bg-[rgba(144,144,144,0.45)]", item.label === homeCategory && "bg-white text-black hover:bg-white")}>{item.label}</li>
-            })}
-        </ul>
+        <div className="w-full overflow-x-hidden">
+            <ul className="max-w-full overflow-x-auto flex flex-row gap-4">
+                {homeCategoryList.map(item => {
+                    return <li key={item.label} onClick={() => onClickCategory(item)} className={cn("h-[38px] min-w-fit px-3 flex justify-center items-center border border-transparent rounded-lg bg-[rgba(144,144,144,0.2)] cursor-pointer hover:bg-[rgba(144,144,144,0.45)]", item.label === homeCategory && "bg-white text-black hover:bg-white")}>{item.label}</li>
+                })}
+            </ul>
+        </div>
     )
 }
 
