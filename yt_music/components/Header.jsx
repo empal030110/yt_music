@@ -10,6 +10,7 @@ import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, Dr
 import Logo from "@/components/elements/Logo";
 import Navigator from '@/components/elements/Navigator';
 import { cn } from "@/lib/utils";
+import useUISate from "@/hooks/useUIState";
 
 const HeaderDrawer = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,6 +33,8 @@ const HeaderDrawer = ({ children }) => {
 }  
 
 const Header = ({ children }) => {
+    const { headerImageSrc } = useUISate();
+    
     const [isScrolled, setIsScrolled] = useState(false);
     const headRef = useRef();
 
@@ -51,7 +54,7 @@ const Header = ({ children }) => {
         <header className='relative overflow-y-auto w-full h-full' ref={headRef}>
             <section className='absolute top-0 w-full'>
                 <div className='relative h-[400px] w-full'>
-                    <Image src="https://images.unsplash.com/photo-1707833558984-3293e794031c" alt='mediaItem' className='object-cover' fill />
+                    <Image src={headerImageSrc || "https://images.unsplash.com/photo-1707833558984-3293e794031c"} alt='mediaItem' className='object-cover' fill />
                     <div className='absolute top-0 bg-black opacity-40 w-full h-[400px]'></div>
                     <div className='absolute top-0 bg-gradient-to-t from-black w-full h-[400px]'></div>
                 </div>
