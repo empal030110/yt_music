@@ -45,10 +45,7 @@ const SongListCarousel:React.FC<SongListCarouselProps> = ({ title, subTitle, Thu
                 <CarouselContent className="mt-4">
                     {chunkedTop10SongList?.map((songlist, index) => {
                         return (
-                        <CarouselItem
-                            key={index}
-                            className="xl:basis-1/3"
-                        >
+                        <CarouselItem key={index} className="xl:basis-1/3">
                             <SongColumn songList={songlist} />
                         </CarouselItem>
                         );
