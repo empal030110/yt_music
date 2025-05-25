@@ -8,6 +8,8 @@ import { permanentRedirect } from "next/navigation";
 import { FiShuffle } from "react-icons/fi";
 import { FiMusic } from "react-icons/fi";
 import React from "react";
+import SongCardRowExpand from "@/components/SongCardRowExpand";
+import PlayListCarousel from "@/components/PlayListCarousel";
 
 interface ChannelPageProps {
     params: {
@@ -42,12 +44,21 @@ const page = async (props: ChannelPageProps) => {
                     <BlackButton className={"w-[230px] flex justify-center"} label= {"구독중 4.10만"} />
                 </div>
             </section>
-            <section>
-                노래
+            <section className="mt-[80px]">
+                <div className="text-[28px] font-bold">노래</div>
+                <div className=",t-[20px]">
+                    <ul className="flex  flex-col gap-4">
+                        {channel.songList.map(( song, key ) => {
+                            return <SongCardRowExpand song={song} key={key} />
+                        })}
+                    </ul>
+                </div>
             </section>
-            <section>
-                앨범
+            <section className="mt-[80px]">
+                <div className="text-[28px] font-bold">앨범</div>
+                <PlayListCarousel playlistArray={channel.playlistArray} />
             </section>
+            <section className="mt-[80px]"></section>
         </PagePadding>
     )
 }
