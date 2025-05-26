@@ -2,23 +2,23 @@
 
 Next.js와 TypeScript를 사용하여 구현한 YouTube Music 클론 프로젝트입니다.
 
-# 기술 스택
+## 기술 스택
 
-# 프레임워크 & 언어
+### 프레임워크 & 언어
 - Next.js 14.1.0
 - React 18
 - TypeScript
 
-# 스타일링
+### 스타일링
 - TailwindCSS
 - tailwind-merge
 - tailwindcss-animate
 - class-variance-authority
 
-# 상태 관리
+### 상태 관리
 - Zustand
 
-# UI 컴포넌트 & 라이브러리
+## UI 컴포넌트 & 라이브러리
 - **Radix UI**
   - `@radix-ui/react-dialog`: 모달 및 다이얼로그
   - `@radix-ui/react-dropdown-menu`: 드롭다운 메뉴
@@ -34,7 +34,7 @@ Next.js와 TypeScript를 사용하여 구현한 YouTube Music 클론 프로젝�
   - `react-spinners`: 로딩 애니메이션
   - `next-themes`: 다크 모드 관리
 
-# 개발 도구 & 품질 관리
+## 개발 도구 & 품질 관리
 - **코드 품질**
   - ESLint: 코드 품질 및 스타일 검사
   - TypeScript: 타입 체크 및 개발 생산성 향상
@@ -43,7 +43,7 @@ Next.js와 TypeScript를 사용하여 구현한 YouTube Music 클론 프로젝�
   - PostCSS: CSS 전처리기
   - Autoprefixer: 크로스 브라우저 CSS 지원
 
-# 설치 방법
+## 설치 방법
 
 1. 저장소 클론
 ```bash
@@ -69,7 +69,7 @@ npm run dev
 yarn dev
 ```
 
-# 프로젝트 구조
+## 프로젝트 구조
 
 ```
 yt_music/
@@ -82,7 +82,7 @@ yt_music/
 └── public/          # 정적 파일
 ```
 
-# 주요 기능
+## 주요 기능
 
 - 다크 모드 지원 (next-themes)
 - 음악 재생 인터페이스
@@ -90,14 +90,14 @@ yt_music/
 - 캐러셀/슬라이더 기능
 - 접근성을 고려한 UI 컴포넌트
 
-# 사용 가능한 스크립트
+## 사용 가능한 스크립트
 
 - `npm run dev` or `yarn dev`: 개발 서버 실행
 - `npm run build` or `yarn build`: 프로덕션용 빌드
 - `npm run start` or `yarn start`: 프로덕션 서버 실행
 - `npm run lint` or `yarn lint`: 린트 검사
 
-# 환경 설정
+## 환경 설정
 
 - Node.js 18.0.0 이상
 - npm 또는 yarn 패키지 매니저
