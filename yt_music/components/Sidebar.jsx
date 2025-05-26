@@ -10,7 +10,7 @@ const Sidebar = ({ children }) => {
     const { isVisiblePlayer } = userPlayerState();
 
     return (
-        <div className={cn("flex flex-row h-full", isVisiblePlayer && "h-[calc(100vh - 72px)]")}>
+        <div className={cn("flex flex-row h-full", isVisiblePlayer && "h-[calc(100vh - 80px)]")}>
             <nav className="hidden lg:block w-[240px] border-r-[1px] border-neutral-600">
                 <div className="p-[24px]">
                     <Logo />

@@ -3,17 +3,19 @@
 import React from 'react'
 import { Slider as PlayerSlider } from "@/components/ui/playerSlider";
 import {useAudio} from 'react-use';
-import { IoPlaySkipBackSharp, IoPlaySkipForwardSharp } from 'react-icons/io5';
-import { AiOutlinePause } from 'react-icons/ai';
+import { IoPlaySkipBackSharp, IoPlaySkipForwardSharp, IoShuffle, IoVolumeHighOutline } from 'react-icons/io5';
+import { AiFillCaretUp, AiOutlinePause } from 'react-icons/ai';
 import usePlayerState from '@/hooks/usePlayerState';
 import { ClipLoader } from "react-spinners";
 import { RiPlayFill } from "react-icons/ri";
+import Image from "next/image";
+import { RxLoop } from 'react-icons/rx';
 
 const PlayerContents = () => {
     const { activeSong } = usePlayerState();
     const [audio, state, controls, ref] = useAudio({
         src: activeSong?.src,
-        autoPlay: true,
+        autoPlay: false,
     });
 
     const isLoading = activeSong?.src && state.buffered?.length === 0;
@@ -50,8 +52,27 @@ const PlayerContents = () => {
                         }
                         <IoPlaySkipForwardSharp size={24} className="cursor-pointer" onClick={onClickNextBtn} />
                     </div>
-                    <article></article>
-                    <div></div>
+                    <article>
+                        <div className="flex flex-row gap-4 items-center">
+                            <div className="relative w-[40px] h-[40px]">
+                                <Image fill className="object-cover" src={activeSong?.imageSrc} alt={activeSong?.name} />
+                            </div>
+                            <div className="flex flex-col">
+                                <div>{activeSong?.name}</div>
+                                <div className="text-neutral-500 text-[14px]">{activeSong?.channel}</div>
+                            </div>
+                        </div>
+                    </article>
+                    <div className="flex flex-row gap-2">
+                        <div className="flex-row gap-2 hidden lg:flex">
+                            <IoVolumeHighOutline size={24} className="cursor-pointer" />
+                            <IoShuffle size={24} className="cursor-pointer" />
+                            <RxLoop size={24} className="cursor-pointer" />
+                        </div>
+                        <div>
+                            <AiFillCaretUp size={24} className="cursor-pointer" />
+                        </div>
+                    </div>
                 </section>
             </div>
         </div>
