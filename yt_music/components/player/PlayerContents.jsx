@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, {useCallback, useEffect} from 'react'
 import { Slider as PlayerSlider } from "@/components/ui/playerSlider";
 import {useAudio} from 'react-use';
 import { IoPlaySkipBackSharp, IoPlaySkipForwardSharp, IoShuffle, IoVolumeHighOutline } from 'react-icons/io5';
@@ -12,35 +12,61 @@ import Image from "next/image";
 import { RxLoop } from 'react-icons/rx';
 
 const PlayerContents = () => {
-    const { activeSong } = usePlayerState();
+    const { activeSong, prevPlayerQueue, nextPlayerQueue, playBack, playNext } = usePlayerState();
     const [audio, state, controls, ref] = useAudio({
         src: activeSong?.src,
-        autoPlay: false,
+        autoPlay: true,
     });
 
     const isLoading = activeSong?.src && state.buffered?.length === 0;
 
-    const onClickPreBtn = () => {
+    const onClickPrevBtn = () => {
+        if (state.playing && state.time > 10) {
+            controls.seek(0);
+            return;
+        }
 
+        if (prevPlayerQueue.length === 0) return;
+        playBack();
     };
+    
     const onClickStartBtn = () => {
-        controls.play();
+        if (activeSong) {
+            controls.play();
+        } else {
+            playNext();
+        }
     };
+
     const onClickPauseBtn = () => {
         controls.pause();
     };
-    const onClickNextBtn = () => {
 
-    };
+    const onClickNextBtn = useCallback (() => {
+        if (nextPlayerQueue.length === 0) {
+            controls.pause();
+        } else {
+            playNext();
+        }
+    }, [controls, playNext, nextPlayerQueue]);
+
+    useEffect(() => {
+        const refAudio = ref.current;
+        refAudio.addEventListener("ended", onClickNextBtn);
+
+        return () => {
+            refAudio.removeEventListener("ended", onClickNextBtn);
+        }
+    }, [ref, onClickNextBtn]);
 
     return (
         <div className="h-full w-full relative">
             <div className="absolute top-[-16px] w-full">
-                <PlayerSlider className="w-full" defaultValue={[0]} value={[state.time]} onValueChange={(value) => { controls.seek(value); }} />
+                <PlayerSlider className="w-full" defaultValue={[0]} value={[state.time]} onValueChange={(value) => { controls.seek(value); }} max={state.duration} />
                 {audio}
                 <section className="flex flex-row justify-between items-center w-full h-full px-2 lg:px-6">
                     <div className="h-full flex flex-row items-center gap-1 lg:gap-8">
-                        <IoPlaySkipBackSharp size={24} className="cursor-pointer" onClick={onClickPreBtn} />
+                        <IoPlaySkipBackSharp size={24} className="cursor-pointer" onClick={onClickPrevBtn} />
                         {
                             isLoading ? (
                                 <ClipLoader color="#FFF" />
