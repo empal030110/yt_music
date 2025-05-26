@@ -9,11 +9,17 @@ import WhiteButton from "@/components/elements/WhiteButton";
 import BlackButton from "@/components/elements/BlackButton";
 import { FiFolderPlus } from "react-icons/fi";
 import { FiPlay } from "react-icons/fi";
+import usePlayerState from '@/hooks/usePlayerState';
 
 const PlayListHead = ({ playlist  ={} } = {}) => {
     const { playlistName, owner, songList } = playlist;
 
     const randomSong = getRandomElementFromArray(songList);
+
+    const { addSongList } = usePlayerState();
+    const onclickPlayList = () => {
+        addSongList(songList);
+    }
 
     return (
         <section>
@@ -28,14 +34,14 @@ const PlayListHead = ({ playlist  ={} } = {}) => {
                         <div>{`${songList.length} • 15분`}</div>
                     </div>
                     <ul className="hidden lg:flex flex-row gap-4 mt-4">
-                        <WhiteButton icon={<FiPlay />} label={"재생"} className={"w-[85px]"} />
+                        <WhiteButton icon={<FiPlay />} label={"재생"} className={"w-[85px]"} onClick={onclickPlayList} />
                         <BlackButton icon={<FiFolderPlus />} label={"보관함에 저장"} className={"w-[135px] text-[14px]"} />
                         <IconButton icon={<FiMoreVertical size={24} />} />
                     </ul>
                 </article>
             </div>
             <ul className="flex flex-row gap-4 mt-4 lg:hidden">
-                <WhiteButton icon={<FiPlay />} label={"재생"} className={"w-[85px]"} />
+                <WhiteButton icon={<FiPlay />} label={"재생"} className={"w-[85px]"} onClick={onclickPlayList} />
                 <BlackButton icon={<FiFolderPlus />} label={"보관함에 저장"} className={"w-[135px] text-[14px]"} />
                 <IconButton icon={<FiMoreVertical size={24} />} />
             </ul>
